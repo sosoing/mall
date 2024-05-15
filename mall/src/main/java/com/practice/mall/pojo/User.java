@@ -7,6 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AdminUser extends User{
+public class User {
+    private Integer userId;
+    private String userName;
+    private String userLoginAccount;
+    private String userLoginPassword;
 
 }
