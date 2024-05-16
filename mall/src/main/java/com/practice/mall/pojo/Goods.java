@@ -12,7 +12,7 @@ import java.util.List;
 public class Goods {
     private Integer goodsId;
     private String goodsName;
-    private Integer goodsnumber;
+    private Integer goodsNumber;
     private Integer goodsOriginalPrice;
     private Integer goodsNowPrice;
     private String goodsImg;

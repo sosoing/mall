@@ -12,5 +12,6 @@ public class User {
     private String userName;
     private String userLoginAccount;
     private String userLoginPassword;
+    private Byte identityId; /*用户识别id，1是商家，2是顾客*/
 
 }

@@ -11,7 +11,7 @@ public interface UserService {
     List<User> getAdminUser();
     List<User> getCustomer();
     User getUserByUserName(String username);
-    void login(String loginname,String password);
+    void login(User user);
 
 
 }
