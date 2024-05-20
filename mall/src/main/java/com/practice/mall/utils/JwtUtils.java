@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 public class JwtUtils {
@@ -28,4 +29,5 @@ public class JwtUtils {
                 .getBody();
         return claims;
     }
+
 }

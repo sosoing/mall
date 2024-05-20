@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
 
-    void login(User user);
+    User login(User user);
     void creatUser(User user);
     void deleteUser(Integer userId);
     void updateUser(User user);
