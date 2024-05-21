@@ -12,11 +12,13 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ShoppingCart {
-    private long cartId;
+    private Long cartId;
     private Integer customerId;
     private List<Integer>  goodsId;
     private Integer goodsCount;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date orderCreatTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date updateTime;
 
 }

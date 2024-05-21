@@ -14,13 +14,15 @@ public class Order {
     private Long orderId;
     private String orderNo;
     private Integer customerId;
-    private double totlePrice;
+    private Double totalPrice;
     private Byte payStatus;
     private Date payTime;
     private Byte orderStatus;
     private String customerAddress;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date orderCreatTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date updateTime;
 
 
 }

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.practice.mall.mapper.ShoppingCartMapper">
+
+    <insert id="insertGoodsInCart" parameterType="com.practice.mall.pojo.CartGoods">
+        insert into shoppingcart(user_id,goods_id,goods_num) values (#{userId},#{goodsId},#{goodsNum})
+    </insert>
+    <update id="updateGoodsInCart" parameterType="com.practice.mall.pojo.CartGoods">
+        update shoppingcart set goods_num=#{goodsNum} where user_id=#{userId} AND goods_id=#{goodsId}
+    </update>
+    <delete id="deleteGoodsInCart">
+        delete from shoppingcart where user_id=#{userId} AND goods_id=#{goodsId}
+    </delete>
+    <select id="getGoodsInCartList" resultType="com.practice.mall.pojo.CartGoods">
+        select g.goods_name,a.goods_num from goods g right join  (
+            select shoppingcart.goods_id,shoppingcart.goods_num from shoppingcart where user_id=1
+        )a on g.goods_id=a.goods_id
+    </select>
+</mapper>
