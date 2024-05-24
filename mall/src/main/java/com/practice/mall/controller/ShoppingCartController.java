@@ -1,6 +1,7 @@
 package com.practice.mall.controller;
 
 import com.practice.mall.pojo.CartGoods;
+import com.practice.mall.pojo.ShoppingItem;
 import com.practice.mall.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,8 +25,8 @@ public class ShoppingCartController {
     public void deleteGoodsInShoppingCart(@RequestBody CartGoods cartGoods){
         shoppingCartService.deleteGoodsInCart(cartGoods);
     }
-    @GetMapping("/ShoppingCart")
-    public List<CartGoods> geiShoppingCart(Integer userId){
+    @GetMapping("/ShoppingCart/{userId}")
+    public List<ShoppingItem> geiShoppingCart(Integer userId){
         return shoppingCartService.getGoodsInCart(userId);
     }
 

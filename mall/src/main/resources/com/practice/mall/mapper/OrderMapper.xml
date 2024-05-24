@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.practice.mall.mapper.OrderMapper">
+    <insert id="insertOrder" parameterType="com.practice.mall.pojo.Order">
+        insert into order(order_no,customer_id,total_price,pay_status,pay_time,order_status,customer_address,order_create_time,update_time)
+        values (#{orderNo},#{customerId},#{totalPrice},#{payStatus},#{payTime},#{orderStatus},#{customerAddress},#{orderCreatTime},#{updateTime})
+    </insert>
+    <insert id="insertOrderItem" parameterType="com.practice.mall.pojo.OrderItem">
+        insert into order_item(order_id,goods_id,goods_img,selling_price,goods_num,create_time,update_time)
+        values (#{orderId},#{goodsId},#{goodsImg},#{sellingPrice},#{goodsNum},#{createTime},#{updateTime})
+    </insert>
+
+    <update id="updateOrder" parameterType="com.practice.mall.pojo.Order">
+        update order set total_price=#{totalPrice},customer_address=#{customerAddress},update_time=#{updateTime}
+        where order_no=#{orderNo}
+    </update>
+    <update id="cancelOrder" parameterType="com.practice.mall.pojo.Order">
+        update order set order_status=2 where order_no=#{orderNo}
+    </update>
+    <update id="updateOrderItem" parameterType="com.practice.mall.pojo.OrderItem">
+        update order_item set selling_price=#{sellingPrice},goods_num=#{goodsNum},update_time=#{updateTime}
+        where order_id=#{orderId}
+    </update>
+    <delete id="deleteOrderItem" parameterType="com.practice.mall.pojo.OrderItem">
+        delete from order_item where order_id=#{orderId} AND goods_id=#{goodsId}
+    </delete>
+    <select id="getOrderByOrderNo" resultType="com.practice.mall.pojo.Order">
+        select * from order where order_no=#{orderNo}
+    </select>
+    <select id="getOrderItemByOrderNo" resultType="com.practice.mall.pojo.OrderItem">
+        select * from order_item where order_id=#{orderId}
+    </select>
+</mapper>

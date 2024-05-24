@@ -3,6 +3,7 @@ package com.practice.mall.service.impl;
 import com.practice.mall.mapper.GoodsMapper;
 import com.practice.mall.mapper.ShoppingCartMapper;
 import com.practice.mall.pojo.CartGoods;
+import com.practice.mall.pojo.ShoppingItem;
 import com.practice.mall.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,7 +34,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    public List<CartGoods> getGoodsInCart(Integer userId) {
+    public List<ShoppingItem> getGoodsInCart(Integer userId) {
         return shoppingCartMapper.getGoodsInCartList(userId);
     }
 }
