@@ -5,6 +5,7 @@ import com.practice.mall.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -15,6 +16,7 @@ public class UserController {
 
     @PostMapping("/Users")
     public void creat(@RequestBody User user){
+        user.setCreatTime(new Date());
         userService.creatUser(user);
     }
 

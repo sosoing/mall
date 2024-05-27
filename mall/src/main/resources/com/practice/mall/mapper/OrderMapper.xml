@@ -21,15 +21,15 @@
     </update>
     <update id="updateOrderItem" parameterType="com.practice.mall.pojo.OrderItem">
         update order_item set selling_price=#{sellingPrice},goods_num=#{goodsNum},update_time=#{updateTime}
-        where order_id=#{orderId}
+        where order_id=#{orderId} AND goods_id=#{goodsId}
     </update>
     <delete id="deleteOrderItem" parameterType="com.practice.mall.pojo.OrderItem">
-        delete from order_item where order_id=#{orderId} AND goods_id=#{goodsId}
+        delete from order_item where order_id=#{orderId}
     </delete>
     <select id="getOrderByOrderNo" resultType="com.practice.mall.pojo.Order">
         select * from order where order_no=#{orderNo}
     </select>
-    <select id="getOrderItemByOrderNo" resultType="com.practice.mall.pojo.OrderItem">
+    <select id="getOrderItemByOrderId" resultType="com.practice.mall.pojo.OrderItem">
         select * from order_item where order_id=#{orderId}
     </select>
 </mapper>

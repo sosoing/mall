@@ -18,8 +18,8 @@
     </select>
 
     <insert id="creatUser" parameterType="com.practice.mall.pojo.User">
-        insert into user(user_name,user_loginaccount,user_loginpassword,identity_id)
-        values (#{userName},#{userLoginAccount},#{userLoginPassword},#{identityId})
+        insert into user(user_name,user_loginaccount,user_loginpassword,identity_id,address,create_time)
+        values (#{userName},#{userLoginAccount},#{userLoginPassword},#{identityId},#{address},#{creatTime})
     </insert>
 
     <delete id="deleteUser" parameterType="java.lang.Integer">
@@ -28,7 +28,7 @@
 
     <update id="updateUser" parameterType="com.practice.mall.pojo.User">
         update user set user_name=#{userName},user_loginaccount=#{userLoginAccount},
-                        user_loginpassword=#{userLoginPassword},identity_id=#{identityId}
+                        user_loginpassword=#{userLoginPassword},identity_id=#{identityId},address=#{address}
         where user_id=#{userId}
     </update>
 

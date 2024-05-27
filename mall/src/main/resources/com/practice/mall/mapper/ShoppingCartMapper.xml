@@ -14,7 +14,7 @@
         delete from shoppingcart where user_id=#{userId} AND goods_id=#{goodsId}
     </delete>
     <select id="getGoodsInCartList" resultType="com.practice.mall.pojo.ShoppingItem">
-        select g.goods_name,a.goods_num from goods g right join  (
+        select g.goods_id,g.goods_name,a.goods_num from goods g right join  (
             select shoppingcart.goods_id,shoppingcart.goods_num from shoppingcart where user_id=1
         )a on g.goods_id=a.goods_id
     </select>

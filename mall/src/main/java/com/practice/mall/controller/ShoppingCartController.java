@@ -26,7 +26,7 @@ public class ShoppingCartController {
         shoppingCartService.deleteGoodsInCart(cartGoods);
     }
     @GetMapping("/ShoppingCart/{userId}")
-    public List<ShoppingItem> geiShoppingCart(Integer userId){
+    public List<ShoppingItem> getShoppingCart(Integer userId){
         return shoppingCartService.getGoodsInCart(userId);
     }
 

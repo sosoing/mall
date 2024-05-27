@@ -10,5 +10,6 @@ public interface GoodsMapper {
     List<Goods> getGoodsList();
     List<Goods> queryGoodsByName(String goodsName);
     List<Goods> queryGoodsByTag(String tag);
+    Goods queryGoodsById(Integer goodsId);
 
 }

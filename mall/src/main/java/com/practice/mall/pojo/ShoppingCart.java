@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Data
 @NoArgsConstructor
@@ -14,8 +15,8 @@ import java.util.List;
 public class ShoppingCart {
     private Long cartId;
     private Integer customerId;
-    private List<Integer>  goodsId;
-    private Integer goodsCount;
+    private List<ShoppingItem> shoppingItemList;
+    private Double totalPrice;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date orderCreatTime;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")

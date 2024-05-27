@@ -16,5 +16,8 @@
                                                                select tag.tag_id from tag where tag.tag_name=#{tag}
                                                            ))
     </select>
+    <select id="queryGoodsById" resultType="com.practice.mall.pojo.Goods">
+        select * from goods where goods_id=goodsId
+    </select>
 
 </mapper>
