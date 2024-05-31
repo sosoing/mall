@@ -21,7 +21,7 @@ public class Order {
     private Byte orderStatus;/*订单状态:0.待支付 1.已支付 2.取消订单*/
     private String customerAddress;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date orderCreatTime;
+    private Date orderCreateTime;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date updateTime;
 

@@ -24,7 +24,7 @@ public class SaveOrderUtils {
         order.setPayStatus((byte) 0);
         order.setOrderStatus((byte) 0);
         order.setCustomerAddress(user.getAddress());
-        order.setOrderCreatTime(new Date());
+        order.setOrderCreateTime(new Date());
         order.setUpdateTime(new Date());
         return order;
 

@@ -1,5 +1,7 @@
 package com.practice.mall;
 
+import com.practice.mall.mapper.OrderMapper;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,6 +12,8 @@ import java.util.List;
 class MallApplicationTests {
 //    @Autowired
 //    private TestMapper testMapper;
+    @Autowired
+    private OrderMapper orderMapper;
 
     @Test
     void contextLoads() {
@@ -23,5 +27,12 @@ class MallApplicationTests {
 //        });
 
 //    }
+
+    @Test
+    void testGetOrder(){
+        com.practice.mall.pojo.Order order=orderMapper.getOrderByOrderNo("a1");
+        System.out.println(order.getOrderCreateTime());
+        System.out.println(order.getOrderId());
+    }
 
 }
