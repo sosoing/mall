@@ -5,7 +5,7 @@
 <mapper namespace="com.practice.mall.mapper.OrderMapper">
     <insert id="insertOrder" parameterType="com.practice.mall.pojo.Order">
         insert into `order`(order_no,customer_id,total_price,pay_status,pay_time,order_status,customer_address,order_create_time,update_time)
-        values (#{orderNo},#{customerId},#{totalPrice},#{payStatus},#{payTime},#{orderStatus},#{customerAddress},#{orderCreatTime},#{updateTime})
+        values (#{orderNo},#{customerId},#{totalPrice},#{payStatus},#{payTime},#{orderStatus},#{customerAddress},#{orderCreateTime},#{updateTime})
     </insert>
     <insert id="insertOrderItem" parameterType="com.practice.mall.pojo.OrderItem">
         insert into order_item(order_id,goods_id,goods_img,selling_price,goods_num,create_time,update_time)

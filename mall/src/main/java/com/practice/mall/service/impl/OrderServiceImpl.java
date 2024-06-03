@@ -1,5 +1,6 @@
 package com.practice.mall.service.impl;
 
+import com.practice.mall.mapper.GoodsMapper;
 import com.practice.mall.mapper.OrderMapper;
 import com.practice.mall.pojo.*;
 import com.practice.mall.service.OrderService;
@@ -17,6 +18,8 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderMapper orderMapper;
+    @Autowired
+    private GoodsMapper goodsMapper;
 
     @Override
     public void updateOrder(Order order,List<OrderItem> orderItemList) {
@@ -30,9 +33,35 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void saveOrder(User user, ShoppingCart shoppingCart) {
-        Order order=SaveOrderUtils.saveOrder(user,shoppingCart);
+        /*订单部分*/
+        Order order=new Order();
+        String orderNo=OrderNoUtils.generateOrderNo();
+        while (orderMapper.getOrderByOrderNo(orderNo)!=null){
+            orderNo=OrderNoUtils.generateOrderNo();
+        }
+        order.setOrderNo(orderNo);
+        order.setCustomerId(shoppingCart.getCustomerId());
+        order.setTotalPrice(shoppingCart.getTotalPrice());
+        order.setPayStatus((byte) 0);
+        order.setOrderStatus((byte) 0);
+        order.setCustomerAddress(user.getAddress());
+        order.setOrderCreateTime(new Date());
+        order.setUpdateTime(new Date());
         orderMapper.insertOrder(order);
-        List<OrderItem> orderItemList= SaveOrderItemUtils.saveOrderItem(order.getOrderNo(),shoppingCart);
+        /*订单商品部分*/
+        List<OrderItem> orderItemList=new ArrayList<>();
+        for (int i = 0; i < shoppingCart.getShoppingItemList().size(); i++) {
+            OrderItem orderItem=new OrderItem();
+            orderItem.setOrderId(orderMapper.getOrderByOrderNo(orderNo).getOrderId());
+            orderItem.setGoodsId(shoppingCart.getShoppingItemList().get(i).getGoodsId());
+            orderItem.setGoodsImg(goodsMapper.queryGoodsById(shoppingCart.getShoppingItemList().get(i).getGoodsId()).getGoodsImg());
+            orderItem.setSellingPrice(goodsMapper.queryGoodsById(shoppingCart.getShoppingItemList().get(i).getGoodsId()).getGoodsNowPrice());
+            orderItem.setGoodsNum(shoppingCart.getShoppingItemList().get(i).getGoodsNum());
+            orderItem.setCreateTime(new Date());
+            orderItem.setUpdateTime(new Date());
+            orderItemList.add(orderItem);
+
+        }
         for (OrderItem orderItem : orderItemList) {
             orderMapper.insertOrderItem(orderItem);
         }
